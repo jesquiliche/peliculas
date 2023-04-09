@@ -1,3 +1,4 @@
+
 import 'bootstrap/dist/css/bootstrap.css';
 
 const fetchPeliculas = async () => {
@@ -22,17 +23,20 @@ const CargarPeliculas =async() => {
     console.log(peliculas);
   return (
     <div className="container-fluid mt-5">
-      <h2 className="text-center text-white mt-5">Películas más populares</h2>
+      <div className="container-text col-lg-6 mx-auto mt-4">
+      <h4 className="text-center text-white">Top 5 películas más populares</h4>
+      </div>
+      
        <div className="row mt-5">
-        {peliculas.results.map((p) => (
+        {peliculas.results.slice(0,5).map((p) => (
             <>
-            <div className="card col-md-2 mt-2 mx-2 px-1">
-                <div className="card-header ">
+            <div className="card col-lg-2 m-2 mt-3 px-1">
+                <div className="card-header text-center">
                 <img class="poster" src={`https://image.tmdb.org/t/p/w500/${p.poster_path}`}/>
 
                 </div>
                 <div className='card-body mx-auto'>
-                <h5>{p.title}</h5>
+                <h6>{p.title}</h6>
                       </div>
           </div>
           

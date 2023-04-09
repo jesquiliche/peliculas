@@ -1,4 +1,9 @@
-
+.container-text {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0.8;
+  padding: 10px;
+  text-align: center; /* Agrega esta línea */
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -41,13 +46,20 @@ body {
   overflow-x: hidden;
 }
 
+
 .card {
-  border-radius: 10px;
-  background-color: #ffffff60;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .55);
+  opacity: 80%;
   color: black;
   font-size: large;
   width: 200px;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease; 
+}
+
+.card:hover {
+  transform: scale(1.1);
 }
 body {
   
@@ -58,9 +70,11 @@ body {
 }
 
 .poster {
-  width: 160px;
+  margin-top: 10px;
+  width: 150px;
   text-align: center;
   border-radius: 10px;
+  
 }
 a {
   color: inherit;
