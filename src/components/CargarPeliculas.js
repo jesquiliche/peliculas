@@ -1,18 +1,19 @@
-
-
-//import Image from 'next/image';
-//import 'bootstrap/dist/css/bootstrap.css';
+import axios from "axios";
 
 const fetchPeliculas = async () => {
   try {
-    const respuesta = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=25349d5497c8655f081fc1abfbd5aa08&language=es-ES&page=1`
+    const respuesta = await axios.get(
+      "https://api.themoviedb.org/3/movie/popular",
+      {
+        params: {
+          api_key: "25349d5497c8655f081fc1abfbd5aa08",
+          language: "es-ES",
+          page: 1
+        },
+        cache: "no-store"
+      }
     );
-    return await respuesta.json();
-    // Si la respuesta es correcta
-    if (respuesta.status == 200) {
-    }
-    return;
+    return respuesta.data;
   } catch (error) {
     console.log(error);
   }
@@ -20,7 +21,7 @@ const fetchPeliculas = async () => {
 
 const CargarPeliculas = async () => {
   const peliculas = await fetchPeliculas();
-  
+
   return (
     <div className="container-fluid mt-5">
       <div className="container-text col-lg-6 mx-auto mt-4">
@@ -30,11 +31,14 @@ const CargarPeliculas = async () => {
       </div>
 
       <div className="row mt-5">
-        {peliculas.results.slice(0,5).map((p) => (
+        {peliculas.results.slice(0, 5).map((p) => (
           <>
-            <div className="card card-portada col-lg-2 m-2 mt-3 px-1">
+            <div className="card card-portada bg-white  col-lg-2 m-2 mt-3 px-1">
               <div className="card-header text-center">
-                <img src={`https://image.tmdb.org/t/p/w154${p.poster_path}`} />
+                <img
+                  src={`https://image.tmdb.org/t/p/w154${p.poster_path}`}
+                  alt={p.title}
+                />
               </div>
               <div className="card-body mx-auto">
                 <h6>{p.title}</h6>

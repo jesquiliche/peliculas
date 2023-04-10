@@ -1,19 +1,21 @@
-
-
-//import Image from 'next/image';
-//import 'bootstrap/dist/css/bootstrap.css';
+import axios from 'axios';
 
 const fetchPeliculas = async () => {
   try {
-    const respuesta = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=25349d5497c8655f081fc1abfbd5aa08&language=es-ES&page=1`,
-      {cache: 'no-store'}
+    const respuesta = await axios.get(
+      `https://api.themoviedb.org/3/movie/popular`,
+      {
+        params: {
+          api_key: '25349d5497c8655f081fc1abfbd5aa08',
+          language: 'es-ES',
+          page: 1
+        },
+        headers: {
+          'Cache-Control': 'no-store'
+        }
+      }
     );
-    return await respuesta.json();
-    // Si la respuesta es correcta
-    if (respuesta.status == 200) {
-    }
-    return;
+    return respuesta.data;
   } catch (error) {
     console.log(error);
   }
@@ -23,8 +25,12 @@ const CargarPopulares = async () => {
   const peliculas = await fetchPeliculas();
   
   return (
-    <div className="container mt-3">
-      
+    
+    <div className="container mt-5">
+
+      <div className="container text-center mt-5 text-dark">
+        <h2 className='text-dark'>Más populares</h2>
+      </div>
 
       <div className="row mt-5">
         {peliculas.results.map((p) => (

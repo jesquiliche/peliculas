@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const fetchPeliculas = async () => {
   try {
-    const respuesta = await axios.get('https://api.themoviedb.org/3/movie/upcoming', {
+    const respuesta = await axios.get('https://api.themoviedb.org/3/movie/top_rated', {
       params: {
         api_key: '25349d5497c8655f081fc1abfbd5aa08',
         language: 'es-ES',
@@ -19,13 +19,13 @@ const fetchPeliculas = async () => {
   }
 };  
   
-  const Proximamente = async () => {
+  const MejorValoradas = async () => {
     const peliculas = await fetchPeliculas();
     
     return (
       <div className="container mt-5">
         <div className="container text-center mt-5 text-dark">
-        <h2 className='text-dark'>Próximamente</h2>
+        <h2 className='text-dark'>Mejor valoradas</h2>
       </div>
   
         <div className="row mt-5">
@@ -46,5 +46,5 @@ const fetchPeliculas = async () => {
     );
   };
   
-  export default Proximamente;
+  export default MejorValoradas;
   
