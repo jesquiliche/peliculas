@@ -1,8 +1,20 @@
 .container-text {
+  position: absolute;
+  z-index: 0;
+  top: 210px;
+  left: 340px;
   background-color: rgba(0, 0, 0, 0.6);
   opacity: 0.8;
   padding: 10px;
   text-align: center; /* Agrega esta línea */
+}
+.navbar-collapse {
+  z-index: 999;
+}
+
+.navbar {
+  z-index: 9999;
+  position: fixed;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,7 +59,11 @@ body {
 }
 
 
-.card {
+.card-portada {
+  position: absolute;
+  z-index: 0;
+  top: -550px;
+  left: 75px;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, .55);
   opacity: 80%;
@@ -63,7 +79,7 @@ body {
 }
 body {
   
-    background-image: url('/img/backdrop.jpg');
+ 
     background-size: 100%;
     background-repeat: no-repeat;
 
@@ -71,7 +87,7 @@ body {
 
 .poster {
   margin-top: 10px;
-  width: 150px;
+  width: 180px;
   text-align: center;
   border-radius: 10px;
   
